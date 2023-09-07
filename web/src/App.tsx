@@ -18,12 +18,16 @@ import { BroadcastsWrapper } from '@hooks/useBroadcasts';
 import Transfer from './views/transfer/Transfer';
 import Transactions from './views/transactions/Transactions';
 import Devbar from '@components/DebugBar';
-import { NUIEvents, UserEvents } from '@typings/Events';
+import { GeneralEvents, NUIEvents, UserEvents } from '@typings/Events';
 import Deposit from './views/Deposit/Deposit';
 import { fetchNui } from '@utils/fetchNui';
 import Withdraw from './views/Withdraw/Withdraw';
 import MobileApp from './views/Mobile/Mobile';
 import { useLbPhoneSettings } from '@hooks/useLbPhoneSettings';
+import { useSetAtom } from 'jotai';
+import { accountsAtom, rawAccountAtom } from '@data/accounts';
+import { transactionBaseAtom, transactionInitialState } from '@data/transactions';
+import CardsView from './views/Cards/CardsView';
 
 dayjs.extend(updateLocale);
 
@@ -54,12 +58,29 @@ const App: React.FC = () => {
   const isMobile = window.location.hash.includes('/mobile');
 
   const [hasLoaded, setHasLoaded] = useState(process.env.NODE_ENV === 'development' || isMobile);
+  const setRawAccounts = useSetAtom(rawAccountAtom);
+  const setAccounts = useSetAtom(accountsAtom);
+  const setTransactions = useSetAtom(transactionBaseAtom);
+
   useNuiEvent({
     event: UserEvents.Loaded,
-    callback: () => setHasLoaded(true),
+    callback: () => {
+      console.debug('Loaded user.');
+      setHasLoaded(true);
+    },
   });
 
-  useNuiEvent({ event: UserEvents.Unloaded, callback: () => setHasLoaded(false) });
+  useNuiEvent({
+    event: UserEvents.Unloaded,
+    callback: () => {
+      console.debug('Unloaded user.');
+      fetchNui(GeneralEvents.CloseUI);
+      setHasLoaded(false);
+      setRawAccounts([]);
+      setAccounts([]);
+      setTransactions(transactionInitialState);
+    },
+  });
 
   useEffect(() => {
     fetchNui(NUIEvents.Loaded);
@@ -79,7 +100,7 @@ const App: React.FC = () => {
   });
 
   const { i18n } = useTranslation();
-  useExitListener();
+  useExitListener(isVisible);
 
   useEffect(() => {
     i18n
@@ -110,6 +131,7 @@ const App: React.FC = () => {
               <Route path="/transfer" component={Transfer} />
               <Route path="/deposit" component={Deposit} />
               <Route path="/withdraw" component={Withdraw} />
+              <Route path="/cards" component={CardsView} />
             </Content>
           </Container>
         )}
