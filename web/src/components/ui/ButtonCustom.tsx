@@ -28,8 +28,15 @@ const StyledButtonBase = styled(ButtonBase)`
   border-radius: ${theme.spacing(1)};
   background-color: #070c0c;
   padding: 0.4rem 2rem;
+  transition: background-color 0.3s, color 0.3s, opacity 0.3s;
 
   ${({ color }) => colors[color ?? 'primary']};
+
+  :hover {
+    background-color: #070c0c;
+    ${({ color }) => colors[color ?? 'primary']};
+    opacity: 0.8;
+  }
 
   :disabled {
     opacity: 0.25;
@@ -37,7 +44,7 @@ const StyledButtonBase = styled(ButtonBase)`
   }
 `;
 
-export const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+export const ButtonCustom: React.FC<ButtonProps> = ({ children, ...props }) => {
   return (
     <StyledButtonBase {...props} color={props.color || 'primary'}>
       {children}
@@ -45,4 +52,4 @@ export const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
   );
 };
 
-export default Button;
+export default ButtonCustom;

@@ -12,10 +12,11 @@ const Container = styled.div<{ selected: boolean; blocked: boolean }>`
   user-select: none;
   width: 100%;
   padding: 1rem;
-  background: ${({ blocked }) =>
+  background-size: cover;
+  background-image: ${({ blocked }) =>
     blocked
-      ? 'linear-gradient(90deg, #bcbcbc 0%, #b0b0b0 100%)'
-      : 'linear-gradient(90deg, #fc5f02 0%, #f43200 100%)'};
+      ? `url(${'https://i.imgur.com/7jK9DeM.png'})`
+      : `url(${'https://i.imgur.com/7jK9DeM.png'})`};
 
   min-height: 7rem;
   width: auto;
@@ -23,14 +24,12 @@ const Container = styled.div<{ selected: boolean; blocked: boolean }>`
 
   cursor: pointer;
   transition: 250ms;
-  box-shadow: ${theme.shadows[4]};
 
   :hover {
     box-shadow: ${theme.shadows[6]};
   }
 
   transition: 200ms ease-in-out;
-  border: 2px solid transparent;
 
   ${({ selected }) => selected && `border: 2px solid ${theme.palette.text.primary}`}
 `;

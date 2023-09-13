@@ -8,7 +8,7 @@
     "enabled": true,
     "resource": "qb-pefcl",
     "syncInitialBankBalance": true,
-    "isCardsEnabled": false
+    "isCardsEnabled": true
   },
   "database": {
     "profileQueries": true

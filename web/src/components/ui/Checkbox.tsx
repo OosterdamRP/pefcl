@@ -22,7 +22,7 @@ const BaseBox = styled.div`
 `;
 
 const CheckedBox = styled(BaseBox)`
-  background-color: ${theme.palette.background.light4};
+  background-color: ${theme.palette.background.dark12};
 `;
 
 const Checkbox: React.FC<CheckboxProps> = (props) => {

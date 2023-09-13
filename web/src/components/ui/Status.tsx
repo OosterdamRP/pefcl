@@ -27,8 +27,8 @@ const Container = styled.div<{ color: Color }>`
   padding: 0.35rem 1.25rem;
   border-radius: ${theme.spacing(1)};
 
-  color: ${theme.palette.primary.main};
-  background-color: ${theme.palette.background.light2};
+  color: ${theme.palette.primary.dark};
+  background-color: ${theme.palette.background.dark12};
 
   span {
     font-size: 0.875rem;

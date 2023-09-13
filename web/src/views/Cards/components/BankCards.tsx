@@ -21,6 +21,7 @@ import AccountSelect from '@components/AccountSelect';
 import Summary from '@components/Summary';
 import { accountsAtom } from '@data/accounts';
 import PinField from '@components/ui/Fields/PinField';
+import ButtonCustom from '@components/ui/ButtonCustom';
 
 const CreateCard = styled.div`
   cursor: pointer;
@@ -68,7 +69,7 @@ const Modal = styled(motion.div)`
   height: 100%;
   top: 0;
   left: 5rem;
-  background-color: ${theme.palette.background.paper};
+  background: ${theme.palette.background.default};
 `;
 
 interface BankCardsProps {
@@ -238,7 +239,7 @@ const BankCards = ({ onSelectCardId, selectedCardId, accountId }: BankCardsProps
         </DialogContent>
 
         <DialogActions>
-          <Button color="inherit" onClick={handleClose}>
+          <Button color="primary" onClick={handleClose}>
             {t('Cancel')}
           </Button>
           <Button onClick={handleOrderCard} disabled={isLoading || !isAffordable}>

@@ -7,11 +7,12 @@ import { useHistory } from 'react-router-dom';
 import Button from '@ui/Button';
 import { Heading5 } from '@ui/Typography/Headings';
 import theme from '../../../utils/theme';
+import ButtonCustom from '@components/ui/ButtonCustom';
 
 const Container = styled.div`
   padding: ${theme.spacing(3)};
   border-radius: ${theme.spacing(2)};
-  background-color: ${theme.palette.background.paper};
+  background: linear-gradient(179.77deg, #e65f0e 30.2%, #e63f0e 69.8%);
 `;
 
 const LoadingContainer = styled(Container)``;
@@ -27,7 +28,7 @@ const Total = styled.div`
 
   border-radius: ${theme.spacing(1)};
   font-weight: ${theme.typography.fontWeightBold};
-  background-color: ${theme.palette.background.light4};
+  background-color: ${theme.palette.background.dark12};
 `;
 
 const Content = styled.div`
@@ -42,7 +43,7 @@ const Content = styled.div`
 
   ::-webkit-scrollbar-thumb {
     border-radius: 2rem;
-    background-color: #80cae24a;
+    background-color: #e65f0e;
   }
 
   padding-right: 12px;
@@ -51,7 +52,7 @@ const Content = styled.div`
 `;
 
 const Title = styled(Heading5)`
-  color: ${theme.palette.primary.dark};
+  color: ${theme.palette.primary.contrastText};
 `;
 
 interface DashboardContainerProps {
@@ -81,7 +82,7 @@ const DashboardContainer: React.FC<DashboardContainerProps> = ({
         <Content>{children}</Content>
 
         <Stack justifyContent="flex-end" alignItems="flex-end">
-          <Button onClick={() => push(viewAllRoute)}>{t('View all')}</Button>
+          <ButtonCustom onClick={() => push(viewAllRoute)}>{t('View all')}</ButtonCustom>
         </Stack>
       </Stack>
     </Container>

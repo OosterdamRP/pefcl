@@ -13,12 +13,12 @@ const Total = styled.div<{ focus: boolean }>`
 
   border-radius: ${theme.spacing(1)};
   font-weight: ${theme.typography.fontWeightBold};
-  background-color: ${theme.palette.background.light4};
+  background-color: ${theme.palette.background.dark12};
 
   ${({ focus }) =>
     focus &&
     `
-      background-color: ${theme.palette.background.light8};
+      background-color: ${theme.palette.background.dark28};
   `}
 `;
 

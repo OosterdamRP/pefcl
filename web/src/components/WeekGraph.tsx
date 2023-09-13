@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { useConfig } from '@hooks/useConfig';
 import { Divider, Popover, Stack } from '@mui/material';
-import { red } from '@mui/material/colors';
+import { red, green } from '@mui/material/colors';
 import { Box } from '@mui/system';
 import { GetTransactionHistoryResponse } from '@typings/Transaction';
 import { formatMoney } from '@utils/currency';
@@ -16,20 +16,20 @@ const Col = styled.div<{ height?: number }>`
   width: 3px;
   height: 4rem;
   border-radius: 1px;
-  background-color: ${theme.palette.primary.main};
+  background-color: ${green[500]};
 
   height: ${({ height }) => `${height}rem`};
 `;
 
 const Expense = styled(Col)`
-  background-color: ${red[400]};
+  background-color: #ff0000;
 `;
 
 const IncomeText = styled(Heading6)`
-  color: ${theme.palette.primary.main};
+  color: ${green[500]};
 `;
 const ExpenseText = styled(Heading6)`
-  color: ${red[400]};
+  color: ${red[500]};
 `;
 
 interface ColumnProps {

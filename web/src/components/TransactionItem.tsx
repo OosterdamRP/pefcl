@@ -24,7 +24,7 @@ const TransactionDate = styled(Heading6)`
 `;
 
 const AccountName = styled(Heading6)`
-  color: ${theme.palette.text.primary};
+  color: ${theme.palette.primary.main};
 `;
 
 const TransactionMessage = styled(BodyText)<{ isLimitedSpace?: boolean }>`

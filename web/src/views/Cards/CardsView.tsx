@@ -40,7 +40,7 @@ const Modal = styled(motion.div)`
   height: 100%;
   top: 0;
   left: 5rem;
-  background-color: ${theme.palette.background.paper};
+  background: #070c0c;
 `;
 
 const CardsView = () => {

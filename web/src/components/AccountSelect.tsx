@@ -26,11 +26,11 @@ const StyledMenuItem = styled(MenuItem)`
   &.Mui-selected:focus-visible,
   &.Mui-selected:focus,
   &.Mui-selected:hover {
-    background: ${theme.palette.background.dark12};
+    background: ${theme.palette.background.dark28};
   }
 
   &.Mui-focusVisible {
-    background: ${theme.palette.background.dark4};
+    background: ${theme.palette.background.dark12};
   }
 `;
 

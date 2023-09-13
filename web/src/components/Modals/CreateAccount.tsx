@@ -51,7 +51,7 @@ const CreateAccountModal: React.FC<{ onClose(): void }> = ({ onClose }) => {
   };
 
   return (
-    <Box p={5} display="flex" flexDirection="column">
+    <Box p={5} display="flex" flexDirection="column" style={{ background: '#E65F0E' }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack direction="row" spacing={8}>
           <Stack spacing={4} flex={1}>

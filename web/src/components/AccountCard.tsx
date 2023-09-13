@@ -21,10 +21,11 @@ const Container = styled.div<ContainerProps>`
   user-select: none;
   width: 100%;
   padding: 1rem;
-  background: ${({ accountType }) =>
+  background-size: cover;
+  background-image: ${({ accountType }) =>
     accountType === AccountType.Personal
-      ? 'linear-gradient(90deg, #264f82 0%, #1d3757 100%)'
-      : 'linear-gradient(90deg, rgb(45, 58, 75) 0%, #263140 100%)'};
+      ? `url(${'https://i.imgur.com/7jK9DeM.png'})`
+      : `url(${'https://i.imgur.com/7jK9DeM.png'})`};
 
   border-radius: 1rem;
   display: grid;
@@ -40,12 +41,10 @@ const Container = styled.div<ContainerProps>`
   }
 
   transition: 200ms ease-in-out;
-  border: 2px solid transparent;
 
   ${({ selected }) =>
     selected &&
     `
-    border: 2px solid ${theme.palette.primary.light};
   `};
 
   ${({ isDisabled }) =>
@@ -107,10 +106,6 @@ export const AccountCard = ({
     <Container {...props} key={id} accountType={type} selected={selected} isDisabled={isDisabled}>
       <Row>
         <Heading3>{formatMoney(balance, config.general)}</Heading3>
-        <Type>
-          <Heading6>{type === AccountType.Shared ? t('SHARED') : t('PERSONAL')}</Heading6>
-          {isDefault && <DefaultText>{t('Default')}</DefaultText>}
-        </Type>
       </Row>
 
       <Stack direction="row" alignItems="center">
@@ -132,6 +127,10 @@ export const AccountCard = ({
           <Heading6>{t('Account name')}</Heading6>
           <BodyText>{accountName}</BodyText>
         </Col>
+        <Type>
+          <Heading6>{type === AccountType.Shared ? t('SHARED') : t('PERSONAL')}</Heading6>
+          {isDefault && <DefaultText>{t('Default')}</DefaultText>}
+        </Type>
       </RowEnd>
     </Container>
   );

@@ -33,7 +33,7 @@ const TransactionsContainer = styled(Stack)`
 
   ::-webkit-scrollbar-thumb {
     border-radius: 2rem;
-    background-color: #80cae24a;
+    background-color: #e65f0e;
   }
 `;
 
